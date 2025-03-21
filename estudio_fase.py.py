@@ -121,7 +121,7 @@ for n in range(len(frecs_M)):
     
     y=np.tan(x)
     Y.append(y)
-    print(f'frec: {frecs_M[n]:9.0f} Hz -',f'x= {x:9.2e} - ',f'tan(x) = {y}')
+    print(f'frec: {frecs_M[n]:9.0f} Hz -',f'x= {x:5.3f} - ',f'tan(x)= {y:6.3f} - ',f'arctan(tan(x))= {np.arctan(y):5.3f}')
 X=np.array(X)
 Y=np.array(Y)
 
@@ -135,14 +135,15 @@ def reducir_a_rango_principal_numpy(x):
       
     return x_equiv
     
-print(X)
+#print(X)
 X_equiv = reducir_a_rango_principal_numpy(X)
-print(X_equiv)
+#print(X_equiv)
 
 fig,ax=plt.subplots(nrows=2,constrained_layout=True,sharex=True)
 ax[0].set_title('n*$\phi_H$ - $\phi_M^n$')
 ax[0].plot(frecs_M,X,'o-',label='Fases')
 ax[0].plot(frecs_M,X_equiv,'s-',label='Fases equiv')
+ax[0].plot(frecs_M,np.arctan(Y),'o-',label='arctan tan')
 
 ax[1].set_title('tan(n*$\phi_H$ - $\phi_M^n$)')
 ax[1].plot(frecs_M,Y,'o-',label='tan(fases)')
