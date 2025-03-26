@@ -65,7 +65,7 @@ templog = 0
 N_espiras_bob_captora=1
 nombre='*NE'
 Analisis_de_Fourier = 1 # sobre las señales, imprime espectro de señal muestra
-N_armonicos_impares = 7
+N_armonicos_impares = 10
 concentracion =7.4*1e3 #[concentracion]= g/m^3 (1 g/l == 1e3 g/m^3) (Default = 10000 g/m^3)
 capsula_glucosa=0   # capsula para solventes organicos
 detector_ciclos_descartables=True #en funcion a Mag max para evitar guardar/promediar con ciclos in/out
@@ -494,8 +494,8 @@ for k in range(len(fnames_m)):
         if not os.path.exists(output_dir_espectros):# Crear el subdirectorio si no existe
             os.makedirs(output_dir_espectros)
         
-        fig_fourier.savefig(os.path.join(output_dir_espectros,fnames_m[k]+'_Espectro.png'),dpi=200,facecolor='w')
-        fig2_fourier.savefig(os.path.join(output_dir_espectros,fnames_m[k]+'_Rec_impar.png'),dpi=200,facecolor='w')
+        fig_fourier.savefig(os.path.join(output_dir_espectros,fnames_m[k][:-4]+'_Espectro.png'),dpi=200,facecolor='w')
+        fig2_fourier.savefig(os.path.join(output_dir_espectros,fnames_m[k][:-4]+'_Rec_impar.png'),dpi=200,facecolor='w')
 
         # Guardar espectro en .txt
         with open(os.path.join(output_dir_espectros, fnames_m[k] + '_Espectro.txt'), 'w') as f:
